@@ -1,1 +1,33 @@
+
+\subsection{Intervention}
+For each intervention we had to favourite and retweet to a specific hashtag. This concluded in three features that needed to be implemented. An automated favouriter that favourites all tweets with the specific hashtag, an automated retweeter that retweets the first four tweets in the timeline with the hashtag and retweet 15 tweets that was not made by a bot from the class.\\
+\\
+We made a single script to withhold all of these features. Firstly we needed to find the tweets, this was done by the search.tweets with a query of the hashtag, count at 100 and the language at English. We then go though every tweet and first we use the favorites.create with the tweets ID, then we use a counter that counts to four, so that the four first tweets gets retweetet using the statuses.retweet with the ID of the tweet. Lastly we check if the tweets belongs to one from the class. If it does not, we then retweet it again using statuses.retweet, and this is done only 15 times using a counter.
+
+\subsection{Daily routine}
+FLOWCHART OF ROUTINE
+Our daily routine started with a retweet, here after we removed all who dint follow us back from the day before, then we started following 200 people and lastly we ended the bots day with a original tweet. The whole routine is shown in the flow chart. NUMMER PÅ FLOWCHART\\
+\\
+Each step in the routine was made in a script for them self. 
+
+\subsubsection{Retweeting}
+Every retweet that we wanted to make should fit the personality of the bot. We therefore used search.tweets to find tweets that used a specific query, as fashion or model OSV. we then compare every tweet and see which have been retweet'et the most, and we retweet the same.\\
+\\
+
+\subsubsection{Following people from SF}
+
+
+\subsubsection{Remove non followers}
+
+\subsection{Creating an original tweet}
+tweet 01
+
+\subsection{Machine Learning and data analysis}
+FLOWCHART OF CLASSIFIER
+Getting information
+features
+training the classifier
+How to use the classifier
+
+
 Describe the workings of your final project bot (how have you used the tools from the class, how did you implement the tools in Python - think flow-charts)?\\
