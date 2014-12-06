@@ -1,0 +1,13 @@
+Creation of data - Benjamin
+Creation of flowcharts
+
+Rapport:
+	Introduction - Benjamin
+	Intervention - Kevin
+	Implementation - Benjamin 
+	Susceptibility analysis:
+		Statistics
+		Theory - Kevin:
+			Naive bayes classifier
+	Discussion
+	Conclusions
