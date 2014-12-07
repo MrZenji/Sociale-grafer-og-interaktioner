@@ -1,19 +1,19 @@
 Now that we have data to classify and the classifier, we are able to classify each profile,
 on how probable the person will follow back. We do this by going through the list of people we have gathered, then we set up 9 probabilities going from 55\% to 95\%. We do not care about probabilities under 55\%, because we want the classifier to make better qualified guesses than a normal human being.\\ We then store the number of people the classifier have guesses, as who would follow back(good), and who would not(bad). Then we check all of the profiles on how many followed back, to see how many times the classifier made a wrong guess. In the end we summarize how many times the classifier made a right and wrong guess.\\
  
-\begin{tabular}{ l | c | c | c | c | c | c |}
-\cline{2-7}
-& \multicolumn{2}{ |c| }{Good} & \multicolumn{2}{ |c| }{Bad} & \multicolumn{2}{ |c| }{Total}\\ \hline
-Probability & Guess & Wrong & Guess & Wrong & Right & Wrong\\ \hline
-95\% & 4 & 3 & 954 & 108 & 847 & 111 \\ \hline
-90\% & 14 & 11 & 944 & 106 & 841 & 117 \\ \hline
-85\% & 48 & 42 & 910 & 103 & 813 & 145 \\ \hline
-80\% & 78 & 67 & 880 & 98 & 796 & 162 \\ \hline
-75\% & 129 & 112 & 829 & 92 & 754 & 204 \\ \hline
-70\% & 208 & 179 & 750 & 80 & 699 & 259 \\ \hline
-65\% & 267 & 231 & 691 & 73 & 654 & 304 \\ \hline
-60\% & 327 & 284 & 631 & 66 & 608 & 350 \\ \hline
-55\% & 385 & 337 & 573 & 61 & 560 & 398 \\ 
+\begin{tabular}{ c | c | c | c | c |}
+\cline{2-5}
+& \multicolumn{2}{ |c| }{Good} & \multicolumn{2}{ |c| }{Bad}\\ \hline
+Probability & Guess & Wrong & Guess & Wrong\\ \hline
+95\% & 4 & 3 & 954 & 108 \\ \hline
+90\% & 14 & 11 & 944 & 106 \\ \hline
+85\% & 48 & 42 & 910 & 103 \\ \hline
+80\% & 78 & 67 & 880 & 98 \\ \hline
+75\% & 129 & 112 & 829 & 92 \\ \hline
+70\% & 208 & 179 & 750 & 80 \\ \hline
+65\% & 267 & 231 & 691 & 73 \\ \hline
+60\% & 327 & 284 & 631 & 66 \\ \hline
+55\% & 385 & 337 & 573 & 61 \\ 
 \hline
 \end{tabular}
 
