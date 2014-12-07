@@ -1,13 +1,14 @@
-Creation of data - Benjamin
+Creation of data - Benjamin Done
 Creation of flowcharts
 
 Rapport:
-	Introduction - Benjamin
+	Introduction - Anders
 	Intervention - Kevin
-	Implementation - Benjamin
+	Implementation - Benjamin Done
 	Susceptibility analysis:
 		Statistics
 		Theory - Kevin:
 			Naive bayes classifier
+		Analyse
 	Discussion
 	Conclusions

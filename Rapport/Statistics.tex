@@ -1,1 +1,34 @@
-Report the central data - it's a good idea to use plots as well as tables.
+Now that we have data to classify and the classifier, we are able to classify each profile,
+on how probable the person will follow back. We do this by going through the list of people we have gathered, then we set up 9 probabilities going from 55\% to 95\%. We do not care about probabilities under 55\%, because we want the classifier to make better qualified guesses than a normal human being.\\ We then store the number of people the classifier have guesses, as who would follow back(good), and who would not(bad). Then we check all of the profiles on how many followed back, to see how many times the classifier made a wrong guess. In the end we summarize how many times the classifier made a right and wrong guess.\\
+ 
+\begin{tabular}{ l | c | c | c | c | c | c |}
+\cline{2-7}
+& \multicolumn{2}{ |c| }{Good} & \multicolumn{2}{ |c| }{Bad} & \multicolumn{2}{ |c| }{Total}\\ \hline
+Probability & Guess & Wrong & Guess & Wrong & Right & Wrong\\ \hline
+95\% & 4 & 3 & 954 & 108 & 847 & 111 \\ \hline
+90\% & 14 & 11 & 944 & 106 & 841 & 117 \\ \hline
+85\% & 48 & 42 & 910 & 103 & 813 & 145 \\ \hline
+80\% & 78 & 67 & 880 & 98 & 796 & 162 \\ \hline
+75\% & 129 & 112 & 829 & 92 & 754 & 204 \\ \hline
+70\% & 208 & 179 & 750 & 80 & 699 & 259 \\ \hline
+65\% & 267 & 231 & 691 & 73 & 654 & 304 \\ \hline
+60\% & 327 & 284 & 631 & 66 & 608 & 350 \\ \hline
+55\% & 385 & 337 & 573 & 61 & 560 & 398 \\ 
+\hline
+\end{tabular}
+
+We then divide the number of wrong with the guess, for both good and bad.\\
+
+\begin{tabular}{ c | c | c |}
+&\multicolumn{2}{| c |}{\% of wrong}\\ \hline
+\multicolumn{1}{c |}{Probability} & Good & Bad\\ \hline
+\multicolumn{1}{c |}{95\%} & 75 & 11.3\\ \hline
+\multicolumn{1}{c |}{90\%} & 78.6 & 11.2\\ \hline
+\multicolumn{1}{c |}{85\%} & 87.5 & 11.3\\ \hline
+\multicolumn{1}{c |}{80\%} & 85.9 & 11.1\\ \hline
+\multicolumn{1}{c |}{75\%} & 86.8 & 11.1\\ \hline
+\multicolumn{1}{c |}{70\%} & 86.1 & 10.7\\ \hline
+\multicolumn{1}{c |}{65\%} & 86.9 & 10.6\\ \hline
+\multicolumn{1}{c |}{60\%} & 86.7 & 10.5\\ \hline
+\multicolumn{1}{c |}{55\%} & 87.5 & 10.6\\ \hline
+\end{tabular}
