@@ -1,7 +1,7 @@
 \subsection{Intervention}
 For each intervention we had to favourite and retweet to a specific hashtag. This concluded in three features that needed to be implemented. An automated favouriter that favourites all tweets with the specific hashtag, an automated retweeter that retweets the first four tweets in the timeline with the hashtag and retweet 15 tweets that was not made by a bot from the class.\\
 \\
-We made a single script to withhold all of these features. Firstly we needed to find the tweets, this was done by the search.tweets with a query of the hashtag, count at 100 and the language at English. We then go though every tweet and first we use the \textit{favorites.create} with the tweets ID, then we use a counter that counts to four, so that the four first tweets gets retweetet using the statuses.retweet with the ID of the tweet. Lastly we check if the tweets belongs to one from the class. If it does not, we then retweet it again using \textit{statuses.retweet}, and this is done up to 15 times using a counter. We also took advantage of twitters fault messages, so that if we tried to retweet the same tweet, it would make a fault, and be caught by a try-except and the script would keep on running.\\
+We made a single script to withhold all of these features. Firstly we needed to find the tweets, this was done by the \textit{search.tweets} with a query of the hashtag, count at 100 and the language at English. We then go though every tweet and first we use the \textit{favorites.create} with the tweets ID, then we use a counter that counts to four, so that the four first tweets gets retweetet using the statuses.retweet with the ID of the tweet. Lastly we check if the tweets belongs to one from the class. If it does not, we then retweet it again using \textit{statuses.retweet}, and this is done up to 15 times using a counter. We also took advantage of twitters fault messages, so that if we tried to retweet the same tweet, it would make a fault, and be caught by a try-except and the script would keep on running.\\
 \\
 
 \subsection{Daily routine}
@@ -32,7 +32,7 @@ Each step in the routine was made in a script for them self.\\
 
 
 \subsubsection{Retweeting}
-Every retweet that we wanted to make should fit the personality of the bot. We therefore used search.tweets to find tweets that used a specific query, as fashion or model etc. we then compare every tweet and see which have been retweet'et the most, and we retweet the same.\\
+Every retweet that we wanted to make, should fit the personality of the bot. We therefore used \textit{search.tweets} to find tweets that used a specific query, for example fashion, model etc. we then compare every tweet retrieved from \textit{search.tweets} and see which have been retweet'et the most, so that we retweet the same.\\
 \\
 
 \subsubsection{Following people from SF}
@@ -41,7 +41,7 @@ If they pass we follow them, and save their screen name in a text file. The stre
 \\
 
 \subsubsection{Remove non followers}
-23 hours and 30 min after we have followed 200 people, we unfollow those who did not follow us back. This is why we save the peoples screen name. To see if they have followed us back, we use \textit{friendships.lookup}, but this method only allows 100 screen names each run. This can be done by making two strings each with 100 names that are comma separated. Then we go though each person and check if it says "followed\_by" in "connections".\\
+23 hours and 30 min after we have followed 200 people, we unfollow those who did not follow us back. This is why we save the peoples screen name in a file. To check if they have followed us back, we use \textit{friendships.lookup}, but this method only allows 100 screen names each run. This can be done by making two strings, each with 100 names that are comma separated. Then we go though each person and check if it says "followed\_by" in "connections".\\
 \\
 
 \subsubsection{Creating an original tweet}
@@ -49,6 +49,27 @@ Creating an original tweet is rather simple, we first save all the tweets we wan
 \\
 
 \subsection{Machine Learning and data analysis}
+\subsubsection{Features}
+To use a classifier you need to have a single feature or several, that divides all data into groups. For our classifier we have chosen three features, Friends count and Followers count of the profile, and the month and year the profile was created. Because you are able to follow and get infinite friends, we set up some criteria.\\
+\begin{itemize}
+	\item{From 0->100}
+	\item{From 101->250}
+	\item{From 251->500}
+	\item{From 501->750}
+	\item{From 751->1000}
+	\item{From 1001->2500}
+	\item{From 2501->5000}
+	\item{Over 9000\footnote{It is actually over 5000}}
+\end{itemize}
+\subsubsection{Extracting data to train the classifier}
+To be able to train the classifier, we first need to gather data from two groups of peoples from San Francisco, those who followed us back and those who dint. So from our daily routine, we have stored screen names all of those who followed us back(good), and all of those who dint(bad), and we got 127 good people, and 1108 bad people. As with all tests you need an equal amount of samples, we can therefore only use 127 of the bad peoples.\\
+For each of these 254 people, we extract their follower count, their friends count and the month and year of creating their profile. For each profile we use their information to group up the features in a dictionary,and make an array of tuples, consisting of the dictionary and if they were good or bad as a string.\\
+We then train the classifier using \textit{nltk.NaiveBayesClassifier.train} with the array of tuples.
+
+\subsubsection{Extracting analytic data}
+After we made the classifier we started to gather all screen names of those we tried to follow. So we could test how correct our classifier was.\\
+So for each screen name we would extract their friends count, followers count and month and year of creating their profile and put in a dictionary. Hereafter use \textit{classifier.prob\_classify} with the dictionary as parameter, and then get the probability for that to be a good person.
+We can then use that probability to set a limit for how sure the classifier should be, before we save their screen name as someone who would follow us or not.
 \begin{figure}
 \begin{center}
 	\begin{tikzpicture}[node distance=2cm]
@@ -72,24 +93,4 @@ Creating an original tweet is rather simple, we first save all the tweets we wan
 \end{center}
 \caption{Flowchart of the data analysis}
 \end{figure}
-\subsubsection{Features}
-To use at classifier you need to have a single feature or several, that divides all data into groups. For our classifier we have chosen three features, Friends count and Followers count of the profile, and the month and year the profile was created. Because you are able to follow and get infinite friends, we set up some criteria's.\\
-\begin{itemize}
-	\item{From 0->100}
-	\item{From 101->250}
-	\item{From 251->500}
-	\item{From 501->750}
-	\item{From 751->1000}
-	\item{From 1001->2500}
-	\item{From 2501->5000}
-	\item{Over 9000\footnote{It is actually over 5000}}
-\end{itemize}
-\subsubsection{Extracting data to train the classifier}
-To be able to train the classifier, we first need to gather data from two groups of peoples from San Francisco, those who followed us back and those who dint. So from our daily routine, we have stored screen names all of those who followed us back(good), and all of those who dint(bad), and we got 127 good people, and 1108 bad people. As with all tests you need an equal amount of samples, we can therefore only use 127 of the bad peoples.\\
-For each of these 254 people we extract their follower count, their friends count and the month and year of creating their profile. For each profile we use their information to group up the features in a dictionary,and make an array of tuples, consisting of the dictionary and if they were good or bad as a string.\\
-We then train the classifier using \textit{nltk.NaiveBayesClassifier.train} with the array of tuples.
-
-\subsubsection{Extracting analytic data}
-After we made the classifier we started to gather all screen names of those we tried to follow. So we could test how correct our classifier was.\\
-So for each screen name we would extract their friends count, followers count and month and year of creating their profile and put in a dictionary. Hereafter use \textit{classifier.prob\_classify} with the dictionary as parameter, and then get the probability for that to be a good person.
-We can then use that probability to set a limit for how sure the classifier should be, before we save their screen name as someone who would follow us or not. 
+\linebreak
