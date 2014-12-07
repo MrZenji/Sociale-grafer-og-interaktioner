@@ -1,29 +1,36 @@
-
 \subsection{Intervention}
 For each intervention we had to favourite and retweet to a specific hashtag. This concluded in three features that needed to be implemented. An automated favouriter that favourites all tweets with the specific hashtag, an automated retweeter that retweets the first four tweets in the timeline with the hashtag and retweet 15 tweets that was not made by a bot from the class.\\
 \\
-We made a single script to withhold all of these features. Firstly we needed to find the tweets, this was done by the search.tweets with a query of the hashtag, count at 100 and the language at English. We then go though every tweet and first we use the favorites.create with the tweets ID, then we use a counter that counts to four, so that the four first tweets gets retweetet using the statuses.retweet with the ID of the tweet. Lastly we check if the tweets belongs to one from the class. If it does not, we then retweet it again using statuses.retweet, and this is done only 15 times using a counter.
+We made a single script to withhold all of these features. Firstly we needed to find the tweets, this was done by the search.tweets with a query of the hashtag, count at 100 and the language at English. We then go though every tweet and first we use the favorites.create with the tweets ID, then we use a counter that counts to four, so that the four first tweets gets retweetet using the statuses.retweet with the ID of the tweet. Lastly we check if the tweets belongs to one from the class. If it does not, we then retweet it again using statuses.retweet, and this is done up to 15 times using a counter. We also took advantage of twitters fault messages, so that if we tried to retweet the same tweet, it would make a fault, and be caught by a try-except and the script would keep on running.\\
+\\
 
 \subsection{Daily routine}
 FLOWCHART OF ROUTINE
 Our daily routine started with a retweet, here after we removed all who dint follow us back from the day before, then we started following 200 people and lastly we ended the bots day with a original tweet. The whole routine is shown in the flow chart. NUMMER PÅ FLOWCHART\\
 \\
-Each step in the routine was made in a script for them self. 
+Each step in the routine was made in a script for them self.\\
+\\
 
 \subsubsection{Retweeting}
 Every retweet that we wanted to make should fit the personality of the bot. We therefore used search.tweets to find tweets that used a specific query, as fashion or model OSV. we then compare every tweet and see which have been retweet'et the most, and we retweet the same.\\
 \\
 
 \subsubsection{Following people from SF}
-
+Before we can follow any from San Francisco, we first need to find people living there. We therefore use the twitter stream to retrieve all tweets made within the area of San Francisco, then we go though each tweet to make sure that it is not made by one from the class. Some other measures we make are that it should not be a retweet, because if it is we cant be sure that it was retweetet from San Francisco, and we use our own criteria to check if the tweet was made by a human.One of the criteria is if the person making the tweet have an average of one tweet for the last 20 days.\\ 
+If they pass we follow them, and save their screen name in a text file. The streamer continues until 200 person's are followed.\\
+\\
 
 \subsubsection{Remove non followers}
+23 hours and 30 min after we have followed 200 people, we unfollow those who did not follow us back. This is why we save the peoples screen name. To see if they have followed us back, we therefore use friendships.lookup, but this method only allows 100 screen names each run. This can be done by making two string each with 100 names that are comma separated. Then we go though each person and check if it says "followed\_by" in "connections".\\
+\\
 
-\subsection{Creating an original tweet}
-tweet 01
+\subsubsection{Creating an original tweet}
+Creating an original tweet is rather simple, we first save all the tweets we want to make later in an array, then we use statuses.update to tweet. We choose randomly one of the tweets in the array, and give the latitude and longitude of San Francisco, with a little noise so that it looks that we travel around.\\
+\\
 
 \subsection{Machine Learning and data analysis}
 FLOWCHART OF CLASSIFIER
+
 Getting information
 features
 training the classifier
