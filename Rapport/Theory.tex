@@ -1,5 +1,20 @@
 Which tools from the class (network science, natural language processing, machine learning) have you used? 
 
-To classify the data, we use a simple naive bayes classifier. However by using this classifier we make the assumption that all of the features are independent of each other. By independent of each other we mean, that there shouldn't be any correlation between the chances of the different features. However in our case we expect to have a correlation between the followers and how many other users the user follows. We choose to disregard this correlation and make the assumption, that all of our features are independent. This assumption can be made because we are dealing with real people.\\
-Creating features are the most important when creating a classifier, without features that utilize the date the most, your classifier wont give you a great answer. In our case we use followers and friends count, and the date of the profile creation. We also wanted to use the age, the gender and name of the person using the profile. But these are not shared though Twitter, but could have been good to have as features.\\
+To classify the data, we use a simple naive Bayes classifier. However by using this classifier we make the assumption that all of the features are independent of each other. By independent of each other we mean, that there shouldn't be any correlation between the chances of the different features. However in our case we expect to have a correlation between the followers and how many other users the user follows. We choose to disregard this correlation and make the assumption, that all of our features are independent. This assumption can be made because we are dealing with real people.\\
+Creating features are the most important thing when creating a classifier, without features that utilize the date, your classifier won't give you a great answer. In our case we use followers and friends count, and also the date of the profile creation. We also wanted to use the age, the gender and name of the person using the profile. But these are not shared though Twitter, but these could also have been good to have as features.\\
 \\
+The simple naive Bayes classifier is built on top of Bayes theorem. Our classifier is a binary classifier, since the only two outcomes we can have is "good", an indication that the profile will follow us back, or "bad" which indicate that profile is not very likely to follow us back. Another thing needed to make a classifier is the data the classifier can be trained based upon. In our case we call this data for features, and the outcome for label. However other articles call the outcomes for classes, and the input for conditional variables. If we look at the classifier for an abstract point of view, we can formulate the following probability model for the classifier.
+\begin{center}
+	$P(L|F_{1},F_{2},F_{3})$
+\end{center}
+or if we make it even more specific for our purpose
+\begin{center}
+	$P("good"|F_{followers},F_{friends},F_{created\_at})$
+\end{center}
+In plain English this corresponds to, the probability of "good" given the features of the followers, friends and created\_at.\\
+However if we look at the general equation for Bayes theorem, we can write it as
+\begin{center}
+	$P(L|F_{1},...,F_{n}) = \dfrac{P(L)*P(F_{1},...,F_{n}|L)}{P(F_{1},...,F_{n})} $
+\end{center}
+
+If we try to explain this equation in the tongue of the common man, we would say. That our assumption is based on the probability for the given outcome times the likelihood of this given the features, and this is all divided by the numbers of evidence based in the trained dataset.
