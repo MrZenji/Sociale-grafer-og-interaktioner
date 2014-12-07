@@ -7,9 +7,30 @@ We made a single script to withhold all of these features. Firstly we needed to 
 \subsection{Daily routine}
 FLOWCHART OF ROUTINE
 Our daily routine started with a retweet, here after we removed all who dint follow us back from the day before, then we started following 200 people and lastly we ended the bots day with a original tweet. The whole routine is shown in the flow chart. NUMMER PÅ FLOWCHART\\
-\\
 Each step in the routine was made in a script for them self.\\
 \\
+\begin{figure}
+\begin{center}
+	\begin{tikzpicture}[node distance=2cm]
+		%blocks
+		\node[startstop](day){Waiting a day};
+		\node[process, right of=day, xshift=1.25cm](retweet){Retweet};
+		\node[process, below of=retweet](remove){Remove non-followers};	
+		\node[process, below of=remove](follow){Follow 200 from SF};
+		\node[process, left of=follow, xshift=-1.25cm](tweet){One original tweet};
+						
+		
+		%arrows
+		\draw[flowArrow](day)--(retweet);			
+		\draw[flowArrow](retweet)--(remove);
+		\draw[flowArrow](remove)--(follow);
+		\draw[flowArrow](follow)--(tweet);
+		\draw[flowArrow](tweet)--(day);					
+	\end{tikzpicture}
+\end{center}
+\caption{Flowchart of the daily routine}
+\end{figure}
+
 
 \subsubsection{Retweeting}
 Every retweet that we wanted to make should fit the personality of the bot. We therefore used search.tweets to find tweets that used a specific query, as fashion or model OSV. we then compare every tweet and see which have been retweet'et the most, and we retweet the same.\\
@@ -29,11 +50,25 @@ Creating an original tweet is rather simple, we first save all the tweets we wan
 \\
 
 \subsection{Machine Learning and data analysis}
-FLOWCHART OF CLASSIFIER
 
+FLOWCHART OF CLASSIFIER
+\subsubsection{Features}
+To use at classifier you need to have a single feature or several, that divides all data into groups. For our classifier we have chosen three features, Friends count and Followers count of the profile, and the month and year the profile was created. Because you are able to follow and get infinite friends, we set up some criteria's.\\
+\begin{itemize}
+	\item{From 0->100}
+	\item{From 101->250}
+	\item{From 251->500}
+	\item{From 501->750}
+	\item{From 751->1000}
+	\item{From 1001->2500}
+	\item{From 2501->5000}
+	\item{Over 9000\footnote{It is actually over 5000}}
+\end{itemize}
+\subsubsection{Extracting data for classifier}
 Getting information
-features
+\subsubsection{Training classifier}
 training the classifier
+\subsubsection{Extracting analytic data}
 How to use the classifier
 
 

@@ -1,5 +1,19 @@
 \documentclass{acm_proc_article-sp}
 
+\usepackage{tikz}
+\usetikzlibrary{shapes,shadows,arrows}
+
+%style to be used on block diagrams
+\tikzstyle{block} = [draw,rectangle, fill=white]
+\tikzstyle{line} = [draw,thick]
+\tikzstyle{arrowLine} = [draw,-stealth,thick]
+
+%style to be used on flow charts diagrams
+\tikzstyle{startstop} = [rectangle, rounded corners, minimum width=2.5cm,
+minimum height=0.75cm,text centered, draw=black,fill=red!30]
+\tikzstyle{process} = [rectangle, minimum width=2.25cm, minimum height=0.75cm, text centered, draw=black, fill=orange!30]
+\tikzstyle{flowArrow} = [thick,->,->=stealth]
+
 \begin{document}
 
 \title{Humans susceptibility to follow social bots}
