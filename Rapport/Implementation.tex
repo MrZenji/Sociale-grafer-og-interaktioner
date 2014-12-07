@@ -50,8 +50,29 @@ Creating an original tweet is rather simple, we first save all the tweets we wan
 \\
 
 \subsection{Machine Learning and data analysis}
-
-FLOWCHART OF CLASSIFIER
+\begin{figure}
+\begin{center}
+	\begin{tikzpicture}[node distance=2cm]
+		%blocks
+		\node[startstop](start){Start};
+		\node[process, right of=start, xshift=2cm](gather){Extract data for features};
+		\node[process, below of=gather](array){Create array of tuples};	
+		\node[process, left of=array, xshift=-2cm](train){Train classifier};
+		\node[decision, below of=train, yshift=-1cm](analyse){Analyse probability};
+		\node[process, below of=analyse, yshift=-1cm](good){Good};
+		\node[process, right of=analyse, xshift=1.5cm](bad){Bad};
+		
+		%arrows
+		\draw[flowArrow](start)--(gather);			
+		\draw[flowArrow](gather)--(array);
+		\draw[flowArrow](array)--(train);
+		\draw[flowArrow](train)--(analyse);
+		\draw[flowArrow](analyse)--(good);
+		\draw[flowArrow](analyse)--(bad);					
+	\end{tikzpicture}
+\end{center}
+\caption{Flowchart of the data analysis}
+\end{figure}
 \subsubsection{Features}
 To use at classifier you need to have a single feature or several, that divides all data into groups. For our classifier we have chosen three features, Friends count and Followers count of the profile, and the month and year the profile was created. Because you are able to follow and get infinite friends, we set up some criteria's.\\
 \begin{itemize}
