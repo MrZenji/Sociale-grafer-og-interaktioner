@@ -32,16 +32,16 @@ Each step in the routine was made in a script for them self.\\
 
 
 \subsubsection{Retweeting}
-Every retweet that we wanted to make should fit the personality of the bot. We therefore used search.tweets to find tweets that used a specific query, as fashion or model OSV. we then compare every tweet and see which have been retweet'et the most, and we retweet the same.\\
+Every retweet that we wanted to make should fit the personality of the bot. We therefore used search.tweets to find tweets that used a specific query, as fashion or model etc. we then compare every tweet and see which have been retweet'et the most, and we retweet the same.\\
 \\
 
 \subsubsection{Following people from SF}
-Before we can follow any from San Francisco, we first need to find people living there. We therefore use the twitter stream to retrieve all tweets made within the area of San Francisco, then we go though each tweet to make sure that it is not made by one from the class. Some other measures we make are that it should not be a retweet, because if it is we cant be sure that it was retweetet from San Francisco, and we use our own criteria to check if the tweet was made by a human.One of the criteria is if the person making the tweet have an average of one tweet for the last 20 days.\\ 
+Before we can follow any from San Francisco, we first need to find people living there. We therefore use the twitter stream to retrieve all tweets made within the area of San Francisco, then we go though each tweet to make sure that it is not made by one from the class. Some other measures we make are that it should not be a retweet, because if it is we cant be sure that it was retweetet from San Francisco, and we use our own criteria to check if the tweet was made by a human. One of the criteria is if the person making the tweet have an average of one tweet for the last 20 days.\\ 
 If they pass we follow them, and save their screen name in a text file. The streamer continues until 200 person's are followed.\\
 \\
 
 \subsubsection{Remove non followers}
-23 hours and 30 min after we have followed 200 people, we unfollow those who did not follow us back. This is why we save the peoples screen name. To see if they have followed us back, we therefore use \textit{friendships.lookup}, but this method only allows 100 screen names each run. This can be done by making two string each with 100 names that are comma separated. Then we go though each person and check if it says "followed\_by" in "connections".\\
+23 hours and 30 min after we have followed 200 people, we unfollow those who did not follow us back. This is why we save the peoples screen name. To see if they have followed us back, we use \textit{friendships.lookup}, but this method only allows 100 screen names each run. This can be done by making two strings each with 100 names that are comma separated. Then we go though each person and check if it says "followed\_by" in "connections".\\
 \\
 
 \subsubsection{Creating an original tweet}
